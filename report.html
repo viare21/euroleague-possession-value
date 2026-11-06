@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What a EuroLeague Possession Is Worth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2F5D9;
+    --bg-card: #FBFCEE;
+    --border: #D6DFA8;
+    --text: #16233F;
+    --text-muted: #5B6650;
+    --green: #3E8E4F;
+    --coral: #C6564F;
+    --gold: #B8860B;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    padding: 96px 0 64px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 5vw, 46px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 58ch;
+  }
+
+  /* ---------- SCOREBOARD ---------- */
+
+  .scoreboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 40px 0 0;
+  }
+
+  .stat {
+    background: var(--bg-card);
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-size: clamp(22px, 4vw, 30px);
+    color: var(--green);
+  }
+
+  .stat-label {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- SECTIONS ---------- */
+
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    color: var(--text);
+  }
+
+  h2 .tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  p { margin-bottom: 16px; color: var(--text); }
+
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--text); }
+
+  a { color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(62,142,79,0.35); }
+  a:hover { border-bottom-color: var(--green); }
+
+  ul { padding-left: 20px; margin-bottom: 16px; color: var(--text); }
+  li { margin-bottom: 10px; }
+  li::marker { color: var(--gold); }
+
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+  }
+
+  /* ---------- TABLE ---------- */
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14.5px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  th {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
+  td.num { font-family: 'IBM Plex Mono', monospace; }
+
+  tr.highlight td { color: var(--green); }
+
+  /* ---------- IMAGES ---------- */
+
+  figure { margin: 28px 0; }
+
+  figure img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: block;
+    box-shadow: 0 8px 24px rgba(22,35,63,0.12);
+  }
+
+  figcaption {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  /* ---------- CALLOUT ---------- */
+
+  .callout {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 24px 0;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .callout strong { color: var(--gold); }
+
+  /* ---------- FOOTER ---------- */
+
+  footer {
+    padding: 48px 0 80px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    padding: 12px 20px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: var(--bg-card);
+  }
+
+  .btn.primary {
+    background: var(--green);
+    color: #FBFCEE;
+    border: none;
+    font-weight: 600;
+  }
+
+  @media (max-width: 560px) {
+    .scoreboard { grid-template-columns: 1fr; }
+    .hero { padding: 64px 0 48px; }
+    table { font-size: 13px; }
+    th, td { padding: 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">EuroLeague · Play-by-Play Data · 2015-2025</div>
+    <h1>What a EuroLeague possession is worth: how you get the ball and how fast you attack</h1>
+    <p class="subtitle">Every possession of 11 EuroLeague seasons, rebuilt from the play-by-play log, to measure how many points it produces depending on how it started and how early the team attacks.</p>
+
+    <div class="scoreboard">
+      <div class="stat">
+        <div class="stat-value">+0.15</div>
+        <div class="stat-label">points per possession after a steal, vs after a defensive rebound</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">1.21</div>
+        <div class="stat-label">points per possession when the first action comes 6-10 seconds after a defensive rebound</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">23%</div>
+        <div class="stat-label">of possessions attacked within 5 seconds start with a turnover</div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <h2><span class="tag">01</span> Background</h2>
+    <p>Coaches know that not all possessions are equal. A steal leads to a fast break, an offensive rebound gives a second attack, and an inbound after a made basket means facing a defence that is already set. The usual way to judge these situations is by feel or by raw box-score counts.</p>
+    <p>This project puts a number on them, using the sequence of events of every game, and asks two questions: <strong>how many points does a possession produce depending on how the team got the ball, and does it pay to attack early?</strong></p>
+  </section>
+
+  <section>
+    <h2><span class="tag">02</span> Data &amp; tools</h2>
+    <ul>
+      <li><strong>Data source:</strong> <a href="https://www.kaggle.com/datasets/babissamothrakis/euroleague-datasets" target="_blank">Euroleague &amp; Eurocup Datasets</a> (Kaggle): the play-by-play log (every event of every game, in order, with the time left in the period) and the game headers (teams and final scores)</li>
+      <li><strong>Tools:</strong> Python, pandas, numpy, matplotlib</li>
+      <li><strong>Scope:</strong> 3,298 EuroLeague games, seasons 2015-16 through 2025-26, about 471,000 possessions</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="tag">03</span> Rebuilding possessions</h2>
+    <p>The play-by-play does not mark possessions, so they are reconstructed from the sequence of events. A possession starts when a team gets the ball and ends when the other team gets it, and each one is labelled by how the team got the ball: <strong>after an opponent basket</strong>, <strong>after a defensive rebound</strong>, <strong>after a steal</strong>, or <strong>after a turnover without a steal</strong> (out of bounds, travel, offensive foul).</p>
+    <p>An offensive rebound is not a new possession. The points scored after it are credited to the possession that missed, so second chance points are part of the value of the possession that created them.</p>
+    <div class="callout">The reconstruction was checked against the official results. <strong>The points rebuilt from the play-by-play match the final score in 100% of the 6,596 team-games</strong>, and the average is 71.5 possessions per team per game. About 4.6% of possessions (start of periods, technical fouls) cannot be classified and are left out.</div>
+  </section>
+
+  <section>
+    <h2><span class="tag">04</span> Value by how the ball was won</h2>
+
+    <table>
+      <thead>
+        <tr><th>Possession starts</th><th>Possessions</th><th>First attack</th><th>Second chances</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight"><td>After a steal</td><td class="num">41,080</td><td class="num">1.14</td><td class="num">0.15</td><td class="num"><strong>1.29</strong></td></tr>
+        <tr><td>After a defensive rebound</td><td class="num">149,075</td><td class="num">0.99</td><td class="num">0.15</td><td class="num"><strong>1.14</strong></td></tr>
+        <tr><td>After an opponent basket</td><td class="num">219,985</td><td class="num">0.95</td><td class="num">0.15</td><td class="num"><strong>1.10</strong></td></tr>
+        <tr><td>After a turnover (no steal)</td><td class="num">38,606</td><td class="num">0.94</td><td class="num">0.16</td><td class="num"><strong>1.10</strong></td></tr>
+      </tbody>
+    </table>
+
+    <figure>
+      <img src="images/points_by_possession_origin.png" alt="Points per possession by origin, first attack and second chances">
+      <figcaption>Points per possession by how the ball was won. Second chances add about 0.15 to every kind of possession</figcaption>
+    </figure>
+
+    <p>A steal is the most valuable way to get the ball: <strong>1.29 points per possession, 0.15 more than after a defensive rebound</strong>. The advantage comes from the fast break, with a defence that has not had time to get set. The premium is positive in every one of the 11 seasons, between +0.11 and +0.22.</p>
+
+    <figure>
+      <img src="images/premium_vs_defensive_rebound.png" alt="Extra points compared with a defensive-rebound possession">
+      <figcaption>Extra points per possession compared with a possession after a defensive rebound (95% confidence interval)</figcaption>
+    </figure>
+
+    <p>A turnover without a steal is not a gift to the other team: the possession that follows is worth slightly less than after a defensive rebound (-0.04), the same as after an opponent basket. The ball is dead, so the defence has time to set up.</p>
+
+    <p>An offensive rebound is an extra attack inside the same possession. The team scores <strong>1.07 points</strong> on average from the rebound until it loses the ball.</p>
+
+    <p>The direction of all this is what any coach expects. What the data adds is the size of the differences.</p>
+  </section>
+
+  <section>
+    <h2><span class="tag">05</span> Does attacking early pay off?</h2>
+    <p>For every possession we measured the seconds between getting the ball and the first shot, free throw or turnover. Possessions in the last 24 seconds of a period and in the last 2 minutes of the fourth quarter and overtime are excluded, because there the clock or intentional fouls force the pace.</p>
+
+    <figure>
+      <img src="images/points_by_speed_of_attack.png" alt="Points per possession by speed of the attack">
+      <figcaption>Points per possession by seconds to the first action, after a defensive rebound and after an opponent basket</figcaption>
+    </figure>
+
+    <p>After a defensive rebound, attacking early pays off, but not at the maximum speed. The best result comes when the first action arrives <strong>between 6 and 10 seconds</strong> (1.21 points per possession), while attacking in the first 5 seconds gives 1.19 and waiting more than 20 seconds drops to 1.03. The gap between fast possessions (up to 10 seconds) and slow ones (16 seconds or more) is positive in every season, between +0.08 and +0.15 points.</p>
+
+    <figure>
+      <img src="images/first_action_by_speed.png" alt="First action by speed of the attack after a defensive rebound">
+      <figcaption>What the first action is, by how early it comes, after a defensive rebound</figcaption>
+    </figure>
+
+    <p>The reason the fastest bucket does not win is in this chart. In the first 5 seconds, <strong>23% of possessions start with a turnover</strong>, against 16% in the 6-10 second bucket and 11% beyond 20 seconds. Pushing the ball brings easy shots and free throws, but it also costs more lost balls.</p>
+
+    <p>After an <strong>opponent basket</strong> the picture is different. A possession whose first action comes within 10 seconds produces <strong>1.02</strong> points on average (0.94 in the first 5 seconds, 1.05 between 6 and 10), against <strong>1.14</strong> when the first action comes between 11 and 20 seconds. The defence is already set, so hurrying brings no advantage.</p>
+  </section>
+
+  <section>
+    <h2><span class="tag">06</span> Takeaways</h2>
+    <ul>
+      <li><strong>Winning the ball with a steal is worth about 0.15 points more than a defensive rebound.</strong> A turnover without a steal gives the other team no advantage over a normal possession.</li>
+      <li><strong>After a defensive rebound, attacking in the first 10 seconds beats waiting.</strong> The best bucket is 6-10 seconds, not the fastest one, because very quick possessions lose the ball more often.</li>
+      <li><strong>After an opponent basket there is no reward for hurrying.</strong> The defence is set, and possessions that take 11 to 20 seconds produce more than those attacked in the first 10.</li>
+      <li><strong>The speed result is not causal.</strong> Slow possessions are often the ones where no good shot appears and the clock runs, so they are also the hardest ones. The data cannot separate "attacking early produces more points" from "good situations lead to early shots". Player positions and shot type are not available, so early shots cannot be compared like for like beyond two-pointer or three-pointer.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <a class="btn primary" href="https://github.com/viare21/euroleague-possession-value" target="_blank">View code on GitHub</a>
+    <a class="btn" href="https://federicoviarengo.com/" target="_blank">Back to portfolio</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
