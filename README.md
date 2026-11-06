@@ -84,7 +84,7 @@ Seconds from the defensive rebound to the first shot, free throw or turnover:
 
 - Attacking early pays off, but the best bucket is 6-10 seconds, not the fastest one. In the first 5 seconds, almost 1 possession in 4 starts with a turnover.
 - The gap between fast possessions (0-10 s) and slow ones (16+ s) is positive in every season, between +0.08 and +0.15 points per possession.
-- After an **opponent basket** the picture is different: attacking in the first 10 seconds produces 0.94 and 1.05 points, against about 1.14 for 11-20 seconds. The defence is already set, so hurrying brings no advantage.
+- After an **opponent basket** the picture is different. A possession whose first action comes within 10 seconds produces **1.02** points on average (0.94 in the first 5 seconds, 1.05 between 6 and 10), against **1.14** when the first action comes between 11 and 20 seconds. The defence is already set, so hurrying brings no advantage.
 
 Possessions in the last 24 seconds of a period and in the last 2 minutes of the 4th quarter and overtime are excluded, because the clock or intentional fouls force the pace there.
 
